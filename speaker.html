@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Speaker Profile | Sleep and Hibernation</title>
+    <meta name="description" content="Speaker profile for the Hibernation and Sleep Science Symposium.">
+    <link rel="icon" href="assets/sleep-hibernation-logo.jpg">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header" aria-label="Main navigation">
+      <a class="brand" href="index.html#top" aria-label="Sleep and Hibernation home">
+        <span class="brand-mark"></span>
+        <span>Sleep and Hibernation</span>
+      </a>
+      <nav class="nav-links" aria-label="Section navigation">
+        <a href="index.html#overview">Overview</a>
+        <a href="index.html#themes">Themes</a>
+        <a href="index.html#speakers">Speakers</a>
+        <a href="index.html#attendance">Attendance</a>
+        <a href="index.html#host">Host</a>
+      </nav>
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu" hidden>
+      <a href="index.html#overview">Overview</a>
+      <a href="index.html#themes">Themes</a>
+      <a href="index.html#speakers">Speakers</a>
+      <a href="index.html#attendance">Attendance</a>
+      <a href="index.html#host">Host</a>
+    </div>
+
+    <main class="profile-main">
+      <section class="profile-hero" aria-labelledby="profile-name">
+        <figure class="profile-photo">
+          <img id="profile-image" src="assets/sleep-hibernation-logo.jpg" alt="">
+        </figure>
+        <div class="profile-content">
+          <p id="profile-role" class="section-kicker">Invited Speaker</p>
+          <h1 id="profile-name">Speaker Profile</h1>
+          <p id="profile-affiliation" class="profile-affiliation"></p>
+          <div class="profile-talk">
+            <span>Talk</span>
+            <p id="profile-talk">To be announced</p>
+          </div>
+          <div class="profile-bio">
+            <span>Biography</span>
+            <p id="profile-bio"></p>
+          </div>
+          <div class="profile-links">
+            <a id="profile-website" class="profile-section-link" href="#" target="_blank" rel="noreferrer">Lab / Profile Website</a>
+          </div>
+          <div class="profile-publications">
+            <span>Representative Publications</span>
+            <ul id="profile-publications"></ul>
+          </div>
+          <a class="profile-back" href="index.html#speakers">Back to speakers</a>
+        </div>
+      </section>
+
+      <nav class="profile-pager" aria-label="Speaker navigation">
+        <a class="pager-link pager-prev" id="pager-prev" href="#">
+          <span class="pager-dir">← Previous</span>
+          <span class="pager-name"></span>
+        </a>
+        <a class="pager-link pager-next" id="pager-next" href="#">
+          <span class="pager-dir">Next →</span>
+          <span class="pager-name"></span>
+        </a>
+      </nav>
+    </main>
+
+    <button class="to-top" id="to-top" type="button" aria-label="Back to top" hidden>↑</button>
+
+    <script src="script.js"></script>
+    <script src="speaker.js"></script>
+  </body>
+</html>
