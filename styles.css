@@ -1061,6 +1061,12 @@ h3 {
   transform: none;
 }
 
+/* Keep the speaker list visible if scroll-reveal does not fire. */
+.speakers-section.reveal {
+  opacity: 1;
+  transform: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     opacity: 1;
