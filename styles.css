@@ -1522,7 +1522,8 @@ h3 {
 }
 
 .program-talk {
-  grid-template-columns: 145px 128px minmax(0, 1fr);
+  grid-template-columns: max-content 128px minmax(0, 1fr);
+  column-gap: 24px;
   padding: 28px 24px;
   background: #243d50;
   box-shadow: 0 3px 12px rgba(5, 17, 27, 0.1);
@@ -1544,12 +1545,12 @@ h3 {
   border-left: 4px solid #d4ad66;
 }
 
-.program-time { display: grid; gap: 8px; }
-.program-time .schedule-duration { text-align: left; }
+.program-time { display: grid; gap: 8px; justify-items: end; }
+.program-time .schedule-duration { text-align: right; }
 .program-time .schedule-time { color: #eef5fa; }
 .schedule-keynote .program-time .schedule-time { color: #f2cb85; }
 
-/* Center unframed portraits within each program card. */
+/* Center portraits between equally spaced text columns. */
 .program-talk > .schedule-detail { grid-column: 3; grid-row: 1; }
 
 .program-portrait {
@@ -1562,7 +1563,7 @@ h3 {
   padding: 0;
   overflow: hidden;
   background: transparent;
-  border: 0;
+  border: 1px solid rgba(165, 217, 230, 0.45);
   border-radius: 8px;
   box-shadow: none;
 }
