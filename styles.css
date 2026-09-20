@@ -270,7 +270,7 @@ h3 {
 }
 
 .intro-section {
-  background: #11182a;
+  background: #142337;
 }
 
 .intro-main h2 {
@@ -337,9 +337,8 @@ h3 {
 
 .theme-section {
   background:
-    radial-gradient(circle at 18% 18%, rgba(244, 165, 28, 0.12), transparent 28%),
-    linear-gradient(180deg, rgba(131, 200, 222, 0.1), transparent 42%),
-    #0c0d20;
+    radial-gradient(circle at 18% 18%, rgba(244, 165, 28, 0.08), transparent 36%),
+    #1d3447;
 }
 
 .theme-section .section-kicker {
@@ -477,6 +476,106 @@ h3 {
   transform: translateX(2px);
 }
 
+.schedule-intro {
+  color: var(--muted);
+  margin-bottom: 30px;
+}
+
+.schedule-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 2px solid var(--amber);
+}
+
+.schedule-row {
+  display: grid;
+  grid-template-columns: 145px minmax(0, 1fr) 90px;
+  gap: 24px;
+  align-items: start;
+  padding: 24px 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.schedule-time {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  font-weight: 800;
+}
+
+.schedule-detail a {
+  color: var(--blue);
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.schedule-detail a:hover,
+.schedule-detail a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.schedule-detail p {
+  margin: 6px 0 0;
+  color: var(--muted);
+}
+
+.schedule-duration {
+  color: var(--muted);
+  font-size: 14px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.schedule-break {
+  background: rgba(255, 255, 255, 0.035);
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.schedule-keynote {
+  background: rgba(244, 165, 28, 0.07);
+}
+
+.schedule-keynote .schedule-time,
+.schedule-keynote a,
+.schedule-badge {
+  color: var(--amber);
+}
+
+.schedule-badge {
+  display: inline-block;
+  margin-left: 12px;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.schedule-affiliation {
+  display: block;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+@media (max-width: 700px) {
+  .schedule-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px 16px;
+    padding: 20px 14px;
+  }
+
+  .schedule-detail {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .schedule-duration {
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
+
 .speaker-card.is-hidden {
   display: none;
 }
@@ -607,7 +706,7 @@ h3 {
   gap: clamp(48px, 7vw, 120px);
   align-items: center;
   justify-content: center;
-  background: #0c0d20;
+  background: #173d46;
 }
 
 .attendance-section .section-kicker {
@@ -734,6 +833,7 @@ h3 {
 
 .profile-talk,
 .profile-bio,
+.profile-abstract,
 .profile-links,
 .profile-publications {
   padding: 26px;
@@ -744,12 +844,14 @@ h3 {
 
 .profile-talk,
 .profile-bio,
+.profile-abstract,
 .profile-links {
   margin-bottom: 18px;
 }
 
 .profile-talk span,
 .profile-bio span,
+.profile-abstract span,
 .profile-section-link,
 .profile-publications > span {
   display: block;
@@ -762,6 +864,7 @@ h3 {
 
 .profile-talk span,
 .profile-bio span,
+.profile-abstract span,
 .profile-publications > span {
   margin-bottom: 14px;
 }
@@ -770,11 +873,32 @@ h3 {
   width: fit-content;
 }
 
+.profile-section-link[hidden] {
+  display: none;
+}
+
+#profile-email {
+  text-transform: none;
+  letter-spacing: normal;
+  overflow-wrap: anywhere;
+}
+
 .profile-talk p,
-.profile-bio p {
+.profile-bio p,
+.profile-abstract p {
   margin-bottom: 0;
   color: var(--muted);
   font-size: 18px;
+}
+
+.profile-abstract-copy {
+  display: grid;
+  gap: 14px;
+}
+
+.profile-abstract .abstract-placeholder {
+  color: var(--dim);
+  font-style: italic;
 }
 
 .profile-talk p {
@@ -1061,12 +1185,6 @@ h3 {
   transform: none;
 }
 
-/* Keep the speaker list visible if scroll-reveal does not fire. */
-.speakers-section.reveal {
-  opacity: 1;
-  transform: none;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     opacity: 1;
@@ -1342,4 +1460,243 @@ h3 {
   .overview-panel-media {
     width: min(100%, 300px);
   }
+}
+
+/* Integrated program and speaker profiles */
+.schedule-section {
+  --ink: #f0f5f8;
+  --muted: #c0ced9;
+  --ice: #dcecf4;
+  --blue: #a5d9e6;
+  --line: #415c70;
+  --amber: #f2cb85;
+  --gold: #f2cb85;
+  color-scheme: dark;
+  color: var(--ink);
+  background: #192f40;
+  border-block: 1px solid #355264;
+}
+
+.program-anchor { display: block; scroll-margin-top: 110px; }
+
+.schedule-list {
+  display: grid;
+  gap: 14px;
+  border-top: 0;
+}
+
+.program-session {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 24px;
+  margin-top: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #668494;
+  border-left: 4px solid #83c8de;
+  border-radius: 6px 6px 0 0;
+  background: #203c4e;
+}
+
+.program-session h3 {
+  margin: 0;
+  color: #e3f1f7;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.program-session p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.program-session strong { color: var(--ink); }
+
+.schedule-row {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.program-talk {
+  grid-template-columns: 145px 120px minmax(0, 1fr);
+  padding: 28px 24px;
+  background: #243d50;
+  box-shadow: 0 3px 12px rgba(5, 17, 27, 0.1);
+}
+
+.program-talk:nth-child(odd) { background: #294356; }
+
+.schedule-break {
+  background: #142b3a;
+  border-color: #365265;
+  color: #d6e2e9;
+  border-left: 4px solid #607f93;
+  box-shadow: none;
+}
+
+.program-talk.schedule-keynote {
+  background: #393f3d;
+  border-color: #897650;
+  border-left: 4px solid #d4ad66;
+}
+
+.program-time { display: grid; gap: 8px; }
+.program-time .schedule-duration { text-align: left; }
+.program-time .schedule-time { color: #eef5fa; }
+.schedule-keynote .program-time .schedule-time { color: #f2cb85; }
+
+.program-portrait {
+  display: block;
+  width: 120px;
+  height: 150px;
+  padding: 6px;
+  background: #d5e0e7;
+  border: 1px solid #94aebe;
+  border-radius: 10px;
+  box-shadow: 0 5px 14px rgba(20, 37, 56, 0.13);
+}
+
+.program-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 5px;
+  background: #dbe5ec;
+}
+
+.program-portrait .portrait-sinisa { object-position: 58% center; }
+.program-portrait:focus-visible { outline: 3px solid #a5d9e6; outline-offset: 4px; }
+.program-talk .schedule-affiliation { margin-top: 6px; line-height: 1.5; }
+.program-talk .program-title { color: var(--ink); font-size: 18px; margin-top: 14px; }
+.program-abstract { margin-top: 18px; }
+
+.program-abstract summary {
+  cursor: pointer;
+  width: fit-content;
+  min-height: 40px;
+  padding: 7px 13px;
+  border: 1px solid #658298;
+  border-radius: 6px;
+  background: #304f63;
+  color: #e1eff6;
+  font-weight: 700;
+}
+
+.program-abstract summary:hover { background: #3c6177; }
+.program-abstract summary:focus-visible { outline: 3px solid #a5d9e6; outline-offset: 3px; }
+.program-abstract[open] summary { background: #3c6177; color: #f0f7fb; }
+
+.program-abstract-copy {
+  border-left: 3px solid #7097ad;
+  padding: 14px 18px;
+  margin: 14px 0 18px;
+  max-width: 78ch;
+  background: #1d3546;
+  border-radius: 0 6px 6px 0;
+}
+
+.program-abstract-copy p { line-height: 1.75; margin: 0 0 14px; }
+.program-abstract-copy p:last-child { margin-bottom: 0; }
+
+.schedule-detail .program-profile-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  max-width: 100%;
+  margin-top: 14px;
+  padding: 10px 18px;
+  border: 1px solid #a6d9e4;
+  border-radius: 7px;
+  background: #a6d9e4;
+  color: #16374a;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 800;
+  box-shadow: 0 3px 8px rgba(20, 37, 56, 0.12);
+  transition: background 160ms ease, box-shadow 160ms ease;
+}
+
+.schedule-detail .program-profile-link:hover {
+  background: #caeaf0;
+  text-decoration: none;
+  box-shadow: 0 5px 12px rgba(20, 37, 56, 0.2);
+}
+
+.schedule-detail .program-profile-link:focus-visible {
+  outline: 3px solid #f2cb85;
+  outline-offset: 4px;
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .program-talk { grid-template-columns: 96px minmax(0, 1fr); gap: 18px; padding: 22px 18px; }
+  .program-time { grid-column: 1 / -1; grid-row: 1; display: flex; justify-content: space-between; gap: 12px; }
+  .program-portrait { grid-column: 1; grid-row: 2; width: 96px; height: 120px; padding: 5px; }
+  .program-talk .schedule-detail { grid-column: 2; grid-row: 2; min-width: 0; }
+  .program-talk .schedule-badge { margin-left: 0; display: block; }
+}
+
+@media (max-width: 480px) {
+  .program-talk { grid-template-columns: 76px minmax(0, 1fr); gap: 12px; padding: 18px 14px; }
+  .program-portrait { width: 76px; height: 95px; padding: 4px; }
+  .program-talk .schedule-detail > a { font-size: 18px; }
+  .program-talk .program-title { font-size: 16px; }
+  .program-talk .schedule-affiliation { font-size: 13px; }
+  .program-abstract-copy { padding: 12px; }
+  .program-talk .schedule-detail .program-profile-link { width: 100%; padding: 10px 12px; font-size: 13px; text-align: center; }
+}
+
+/* Keep the two actions aligned while native details expands below them. */
+.program-talk .program-actions {
+  grid-column: 3;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  min-width: 0;
+}
+
+.program-actions .program-abstract {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  min-width: 0;
+  margin: 0;
+}
+
+.program-actions .program-abstract summary {
+  width: 112px;
+  height: 44px;
+  padding: 9px 10px;
+}
+
+.program-talk .program-actions .program-profile-link {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: start;
+  position: relative;
+  width: fit-content;
+  height: 44px;
+  margin: 0;
+  padding: 8px 14px;
+}
+
+@media (max-width: 900px) {
+  .program-talk .program-actions { grid-column: 2; grid-row: 3; }
+}
+
+@media (max-width: 600px) {
+  .program-talk .program-actions { grid-column: 1 / -1; }
+}
+
+@media (max-width: 480px) {
+  .program-talk .program-actions { grid-template-columns: 100px minmax(0, 1fr); gap: 8px; }
+  .program-actions .program-abstract summary { width: 100px; font-size: 14px; padding: 10px 8px; }
+  .program-talk .program-actions .program-profile-link { font-size: 12px; padding: 6px 8px; text-align: center; }
 }
