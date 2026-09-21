@@ -2,7 +2,7 @@ const speakers = {
   "takeshi-sakurai": {
     name: "Takeshi Sakurai",
     affiliation: "University of Tsukuba, International Institute for Integrative Sleep Medicine (WPI-IIIS)",
-    talk: "Neural Control of Hibernation-like Hypometabolism in Non-hibernating Mammals",
+    talk: "Brain Dynamics during an Induced Hypothermic State",
     image: "assets/takeshi-sakurai.jpeg",
     imageClass: "portrait-takeshi",
     website: {
@@ -336,7 +336,7 @@ const speakers = {
   "qinghua-liu": {
     name: "Qinghua Liu",
     affiliation: "Tsinghua University, Tsinghua Institute of Multidisciplinary Biomedical Research; National Institute of Biological Sciences, Beijing",
-    talk: "Phase separation, synaptic transmission, and sleep amount",
+    talk: "Phase separation, synaptic transmission, and sleep regulation",
     image: "assets/qinghua-liu-updated.png",
     imageClass: "",
     website: {
